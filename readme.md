@@ -1,7 +1,5 @@
 # TP en x86_64
 
-Les réponses de questions sont mises ici: [LIEN À AJOUTER]
-
 ### Q1.1.1
 a,b,c,d,e sont stockés dans l'addresse contenue dans R7 avec les offsets suivants: 20,16,12,8,4. Donc:
 - a -> [R7, #20]
@@ -16,10 +14,10 @@ avec R7 = SP. Donc **dans le pile**
 Au debut de sub01(), on soustrait 24 bytes pour le SP, pour allouer suffisament d'espace.
 Pour le liberer, on ajoute simplement les 24 bytes pour rendre le zone "cache".
 
-### ### Q1.1.3
+### Q1.1.3
 On ne stocke plus tous les variables, mais on calculs directement nos resultats avec les registres. Donc pas d'utilisation de SP/ la pile.
 
-### ### Q1.2.1
+### Q1.2.1
 a,b,c,d,e sont stockés dans l'addresse contenue dans %ebp avec les offsets suivants: -0x1c, -0x18, -0x14, -0x10, -0x0c  Donc:
 - a -> -0x1c(%ebp)
 - b -> -0x18(%ebp)
