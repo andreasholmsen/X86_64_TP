@@ -1,5 +1,7 @@
 # TP en x86_64
 
+## EXO1
+
 ### Q1.1.1
 a,b,c,d,e sont stockés dans l'addresse contenue dans R7 avec les offsets suivants: 20,16,12,8,4. Donc:
 - a -> [R7, #20]
@@ -43,4 +45,31 @@ La taille des registres sont differents
 ### Q1.3.2
 Les instructions sont les mêmes mais les registres sont plus grands (64 bit au lieu de 32 bit).
 
+## EXO2
 
+### Q.2.1.1
+Seed() met la valeur dans r0
+
+### Q.2.1.2
+Les valeurs sont stockés dans le pile
+
+### Q.2.1.3
+La fonction n'est même pas appellé. Le programme fait les calculs directement.
+
+### Q.2.2.1
+La valeur est mise dans %eax
+
+### Q.2.2.2
+Tous les valeurs sont mises dans le pile adjecent de les autres. 
+
+### Q.2.2.3
+Les arguments sont toujours dans le pile, mais ils sont tous mises dans des registres differents au debut pour faire les calculs au lieu d'être cherchés dans le pile à chaque besoin.
+
+### Q.2.2.4
+Sub01() n'est plus appelé. Au lieu, le fonction main() a été modifié pour faire les calculs directement. 
+
+### Q.2.2.5
+Le montant d'operations LEA a augmenté, qui est plus efficace qu'une combination d'additions et multiplications. 
+
+### Q.2.3.1
+Les arguments sont même pas mises dans le pile. Ils sont directement mises dans les registres pendant la fonction main() et traites directements du debut de la fonction sub01()
