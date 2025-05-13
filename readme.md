@@ -1,6 +1,6 @@
 # TP en x86_64
 
-## EXO1
+## EXPO1
 
 ### Q1.1.1
 a,b,c,d,e sont stockés dans l'addresse contenue dans R7 avec les offsets suivants: 20,16,12,8,4. Donc:
@@ -45,7 +45,7 @@ La taille des registres sont differents
 ### Q1.3.2
 Les instructions sont les mêmes mais les registres sont plus grands (64 bit au lieu de 32 bit).
 
-## EXO2
+## EXPO2
 
 ### Q.2.1.1
 Seed() met la valeur dans r0
@@ -73,3 +73,33 @@ Le montant d'operations LEA a augmenté, qui est plus efficace qu'une combinatio
 
 ### Q.2.3.1
 Les arguments sont même pas mises dans le pile. Ils sont directement mises dans les registres pendant la fonction main() et traites directements du debut de la fonction sub01()
+
+## EXPO3
+
+### Q3.1.1
+À partir de l'instruction dans sub01() "return i;", la programme arrete de fonctionner proprement
+
+### Q3.1.2
+Dans sub02, on essaye d'écrire dans bb[9] qui n'existe pas, donc on écrit dans le cas après le tableau bb dans le pile, qui est l'addresse de retour. Quand on va faire le retour, on n'a plus la bonne valeur
+
+### Q3.1.3
+Parce que la programme n'est pas si optimalisé, elle prend encore plus d'espace de la pile pour avoir suffisament d'espace pour les calculs. Ca permet de avoir un espace "securisé", qui ne pose pas de problème pour l'effacement de l'addresse de retour.
+
+### Q3.2.1
+Avec un canarie. Un valeur connue est mis dans le pile pour verifiér que le pile n'a pas été changé / n'a pas de comportement abimé. 
+
+On le voit avec la fonction "__stack_chk_fail_local()"
+
+### Q3.2.2
+Oui les valeurs dans les registres sont differents à chaque fois. C'est probablement la valeur de la canarie
+
+### Q3.2.3
+Non pas correct. Le programme devie à partir de ligne "return i" dans la fonction sub01() ou il ne plus acceder la memoire. Mais il continue un peu pour executer expose(). 
+
+### Q3.2.4
+La cause, c'est que on n'a plus de canarie donc on ne verifie plus que l'integrité du pile est correcte. On essaye de lire un addresse pas valide. On a efface l'addresse de retour donc on recoit un Faute de segmentation. 
+
+### Q3.2.5
+On écrit dans l'addresse de retour dans sub01() qui provoque qu'on saute à n'importe où. C'est parce que cette fois on a écrase le cas qui contient l'addresse de retour. 
+
+
